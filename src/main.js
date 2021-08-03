@@ -1,11 +1,6 @@
 const { Blockchain, Transaction } = require('./blockchain');
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
-const express = require ('express')
-const main = express();
-const savjeecoin = require ('savjeecoin');
-
-
 
 // Your private key goes here
 const myKey = ec.keyFromPrivate('7c4c45907dec40c91bab3480c39032e90049f1a44f3e18c3e07c23e3273995cf');
@@ -45,22 +40,4 @@ console.log(`Balance of xavier is ${savjeeCoin.getBalanceOfAddress(myWalletAddre
 console.log();
 console.log('Blockchain valid?', savjeeCoin.isChainValid() ? 'Yes' : 'No');
 
-main.get('/', function (req, res) {
-  main.find({}, function (err, main) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('index', {
-        title: 'Main',
-        articles: main
-      });
-    }
-  });
-});
 
-
-main.listen(3000, function () {
-  console.log('listening on port 3000!');
-});
-
-module.exports = main.js;
